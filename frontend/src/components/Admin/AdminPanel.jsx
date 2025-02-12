@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, ThemeProvider, createTheme } from "@mui/material";
+import { Dialog, DialogActions,Typography, DialogContent, DialogTitle, TextField, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, ThemeProvider, createTheme } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import CSS for toastify
 
@@ -82,14 +82,16 @@ const AdminPanel = () => {
   return (
     <ThemeProvider theme={theme}>
       <div>
-        <h2>Admin Panel</h2>
+        <Typography sx={{ textAlign: "center", fontWeight: "bold" ,fontSize:"24px"}}>All Appoinments </Typography>
 
         {/* Slot Creation Button with rounded corners and simple letters */}
         <Button
+          
           variant="contained"
           color="primary"
           onClick={() => setOpenDialog(true)}
           sx={{
+            bgcolor: "green",
             borderRadius: "10px", // Rounded corners
             textTransform: "none", // No uppercase transformation
             padding: "8px 16px", // Adjust button padding
@@ -97,13 +99,14 @@ const AdminPanel = () => {
         >
           Create Slot
         </Button>
-
+<br></br>
         {/* Slot Creation Popup */}
         <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
-          <DialogTitle>Create a Slot</DialogTitle>
-          <DialogContent>
+          <DialogTitle sx={{ textAlign: "center", fontWeight: "bold" }}>Create a Slot</DialogTitle>
+          <DialogContent sx={{ width: 450 }}>
+          <Typography sx={{ mb: 1 }}>Date</Typography>
             <TextField
-              label="Date"
+              
               type="date"
               fullWidth
               value={date}
@@ -113,6 +116,7 @@ const AdminPanel = () => {
                 shrink: true, // Ensures the label stays on top of the input field
               }}
             />
+            <Typography sx={{ mb: 1 }}>Start Time</Typography>
             <TextField
               label="Start Time"
               type="time"
@@ -124,6 +128,7 @@ const AdminPanel = () => {
                 shrink: true,
               }}
             />
+            <Typography sx={{ mb: 1 }}>End Time</Typography>
             <TextField
               label="End Time"
               type="time"
@@ -137,17 +142,18 @@ const AdminPanel = () => {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => setOpenDialog(false)} color="secondary">
+            <Button onClick={() => setOpenDialog(false)} sx={{ bgcolor: "red", color: "white", textTransform: "none" }}>
               Cancel
             </Button>
-            <Button onClick={createSlot} color="primary">
+            <Button onClick={createSlot} sx={{ bgcolor: "green", color: "white", textTransform: "none" }}>
               Create Slot
             </Button>
+            <br></br>
           </DialogActions>
         </Dialog>
 
         {/* Table for Available Appointments */}
-        <h3>Available Appointments</h3>
+        <br></br>
         {appointments.length === 0 ? (
           <p>No appointments available.</p>
         ) : (
@@ -155,10 +161,10 @@ const AdminPanel = () => {
             <Table sx={{ minWidth: 650 }} aria-label="appointments table">
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ backgroundColor: "#003366", color: "#FFFFFF" }}>Date</TableCell>
-                  <TableCell sx={{ backgroundColor: "#003366", color: "#FFFFFF" }}>Start Time</TableCell>
-                  <TableCell sx={{ backgroundColor: "#003366", color: "#FFFFFF" }}>End Time</TableCell>
-                  <TableCell sx={{ backgroundColor: "#003366", color: "#FFFFFF" }}>Customer</TableCell>
+                  <TableCell sx={{ backgroundColor: "#030735", color: "#FFFFFF" }}>Date</TableCell>
+                  <TableCell sx={{ backgroundColor: "#030735", color: "#FFFFFF" }}>Start Time</TableCell>
+                  <TableCell sx={{ backgroundColor: "#030735", color: "#FFFFFF" }}>End Time</TableCell>
+                  <TableCell sx={{ backgroundColor: "#030735", color: "#FFFFFF" }}>Customer</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

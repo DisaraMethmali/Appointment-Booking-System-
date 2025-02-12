@@ -1,0 +1,63 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff8f8;
+  }
+  
+  .container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+ 
+  
+  .header-title {
+    color: #030735;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .appointment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .appointment-table th, .appointment-table td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .appointment-table th {
+    background-color: #1A237E;
+    color: white;
+  }
+  
+  .appointment-table tr {
+    border-top: 1px solid #ddd;
+  }
+  
+  .booked-slot {
+    background-color: #C8E6C9;
+  }
+  
+  .book-btn {
+    background-color: #1976d2;
+    color: white;
+  }
+  
+  .booked-btn {
+    background-color: #388E3C !important;
+  }
+  
+  .dialog-title {
+    background-color: #1A237E;
+    color: white;
+  }
+  
+  .confirm-btn {
+    background-color: #1976d2;
+    color: white;
+  }
+  

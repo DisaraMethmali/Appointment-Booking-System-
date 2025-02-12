@@ -13,22 +13,41 @@ export default function Navbar() {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: "white" }}>
+    <AppBar position="static" sx={{ backgroundColor: "white", boxShadow: "none" }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        {/* Logo / Title */}
-        <Typography
-          variant="h6"
-          component={Link}
-          to="/"
-          sx={{ textDecoration: "none", color: "blue", fontWeight: "bold" }}
-        >
-          Appointments
-        </Typography>
-
         {/* Navigation Links */}
-        <Box sx={{ display: "flex", gap: 2 }}>
+        <Box sx={{ flex: 1, display: "flex", justifyContent: "center", gap: 6 }}>
+          <Typography variant="h6" component={Link} to="/" sx={{ textDecoration: "none", color: "darkblue" }}>
+            Home
+          </Typography>
+          <Typography variant="h6" component={Link} to="/about" sx={{ textDecoration: "none", color: "darkblue" }}>
+            About
+          </Typography>
+          <Typography variant="h6" component={Link} to="/blog" sx={{ textDecoration: "none", color: "darkblue" }}>
+            Blog
+          </Typography>
+          <Typography variant="h6" component={Link} to="/available-slots" sx={{ textDecoration: "none", color: "darkblue" }}>
+            Bookings
+          </Typography>
+        </Box>
+
+        {/* User Authentication Section */}
+        <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
           {token ? (
             <>
+              <Typography
+                variant="h6"
+                component={Link}
+                to="/my-appointments"
+                sx={{
+                  textDecoration: "none",
+                  color: "darkblue",
+                  cursor: "pointer",
+                }}
+              >
+                My Appointments
+              </Typography>
+
               {user?.isAdmin && (
                 <Typography
                   variant="body1"
@@ -36,32 +55,19 @@ export default function Navbar() {
                   to="/admin"
                   sx={{
                     textDecoration: "none",
-                    color: "blue",
+                    color: "darkblue",
                     cursor: "pointer",
                   }}
                 >
                   Admin
                 </Typography>
               )}
-              <Typography
-                variant="body1"
-                component={Link}
-                to="/my-appointments"
-                sx={{
-                  textDecoration: "none",
-                  color: "blue",
-                  cursor: "pointer",
-                }}
-              >
-                My Appointments
-              </Typography>
+
               <Button
                 sx={{
-                  bgcolor: "darkblue", // Dark blue background
-                  color: "white", // White text color
-                  '&:hover': {
-                    bgcolor: "#003366", // Darker blue on hover
-                  }
+                  bgcolor: "darkblue",
+                  color: "white",
+                  '&:hover': { bgcolor: "#003366" },
                 }}
                 onClick={handleLogout}
               >
@@ -72,11 +78,9 @@ export default function Navbar() {
             <>
               <Button
                 sx={{
-                  bgcolor: "darkblue", // Dark blue background
-                  color: "white", // White text color
-                  '&:hover': {
-                    bgcolor: "#003366", // Darker blue on hover
-                  }
+                  bgcolor: "darkblue",
+                  color: "white",
+                  '&:hover': { bgcolor: "#003366" },
                 }}
                 component={Link}
                 to="/login"
@@ -85,11 +89,9 @@ export default function Navbar() {
               </Button>
               <Button
                 sx={{
-                  bgcolor: "darkblue", // Dark blue background
-                  color: "white", // White text color
-                  '&:hover': {
-                    bgcolor: "#003366", // Darker blue on hover
-                  }
+                  bgcolor: "darkblue",
+                  color: "white",
+                  '&:hover': { bgcolor: "#003366" },
                 }}
                 component={Link}
                 to="/signup"
@@ -103,6 +105,3 @@ export default function Navbar() {
     </AppBar>
   );
 }
-
-
-

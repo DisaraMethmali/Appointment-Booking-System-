@@ -83,11 +83,11 @@ export default function MyAppointments() {
 
   return (
     <Box sx={{ p: 4, maxWidth: 1200, mx: 'auto' }}>
-      <Box sx={{ backgroundColor: '#1A237E', p: 2, borderRadius: 2, boxShadow: 3 }}>
-        <Typography variant="h4" sx={{ color: 'white', fontWeight: 'bold' }}>
+      
+        <Typography sx={{ textAlign: "center", fontWeight: "bold" ,fontSize:"24px"}}>
           My Appointments
         </Typography>
-      </Box>
+      
 
       {loading && <CircularProgress sx={{ mt: 2 }} />}
       {error && <Alert severity="error" sx={{ mt: 2 }}>{error}</Alert>}
@@ -95,7 +95,7 @@ export default function MyAppointments() {
       {appointments.length > 0 ? (
         <TableContainer sx={{ mt: 4, backgroundColor: 'white', borderRadius: 2, boxShadow: 2 }}>
           <Table>
-            <TableHead sx={{ backgroundColor: '#1A237E' }}>
+            <TableHead sx={{ backgroundColor: '#030735' }}>
               <TableRow>
                 <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Date</TableCell>
                 <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Start Time</TableCell>
@@ -110,10 +110,10 @@ export default function MyAppointments() {
                   <TableCell>{appt.start_time}</TableCell>
                   <TableCell>{appt.end_time}</TableCell>
                   <TableCell>
-                    <Button onClick={() => handleOpen(appt.id, appt.user_email)} color="primary">
+                    <Button onClick={() => handleOpen(appt.id, appt.user_email)} sx={{ bgcolor: "green", color: "white", textTransform: "none" ,mr: 2}}>
                       Update 
                     </Button>
-                    <Button onClick={() => cancelAppointment(appt.id)} color="secondary">
+                    <Button onClick={() => cancelAppointment(appt.id)} sx={{ bgcolor: "red", color: "white", textTransform: "none" }}>
                       Cancel
                     </Button>
                   </TableCell>
