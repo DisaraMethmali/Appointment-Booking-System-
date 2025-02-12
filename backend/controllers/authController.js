@@ -7,7 +7,7 @@ const signup = async (req, res) => {
   
   // Validation
   if (!email || !password || !role) {
-    return res.status(400).json({ error: 'All fieljjhjgds are required' });
+    return res.status(400).json({ error: 'All fields are required' });
   }
 
   if (!['customer', 'admin'].includes(role)) {
