@@ -39,14 +39,15 @@ const bookAppointment = async (req, res) => {
 // Assuming you have a controller like this
 const updateAppointment = async (req, res) => {
   const { id } = req.params;
-  const { user_email, user_name } = req.body;  // Now both user_email and user_name can be updated
+  const { user_name } = req.body;  // Only update user_name
 
   try {
     const userEmail = req.user.email; // User email from JWT
 
+    // Update only user_name without modifying user_email
     const result = await db.query(
-      'UPDATE appointments SET user_email = ?, user_name = ? WHERE id = ? AND user_email = ?',
-      [user_email, user_name, id, userEmail]
+      'UPDATE appointments SET user_name = ? WHERE id = ? AND user_email = ?',
+      [user_name, id, userEmail] // Only update user_name
     );
 
     if (result.affectedRows === 0) {
@@ -75,13 +76,14 @@ const cancelAppointment = async (req, res) => {
     res.status(500).json({ error: 'Server error', details: error.message });
   }
 };
+
 const getAppointments = async (req, res) => {
   const userEmail = req.user.email; // Extract user email from token (JWT authentication)
 
   try {
     // Query to fetch the appointments for the user
     const [appointments] = await db.query(
-      'SELECT id, date, start_time, end_time FROM appointments WHERE user_email = ? ORDER BY date, start_time',
+      'SELECT id, date, start_time, end_time,user_name,user_email FROM appointments WHERE user_email = ? ORDER BY date, start_time',
       [userEmail]
     );
 

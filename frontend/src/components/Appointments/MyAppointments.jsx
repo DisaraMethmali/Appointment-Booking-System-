@@ -57,9 +57,8 @@ export default function MyAppointments() {
       setAppointmentId(null); // Reset appointment ID
       fetchAppointments(); // Refetch appointments after update
     } catch (error) {
-      toast.error('Error updating user name');
-      console.error('Error updating user name:', error);
-      setError(error.response?.data?.error || 'Failed to update user name');
+      
+      setError(error.response?.data?.error );
     }
   };
   
@@ -112,7 +111,7 @@ export default function MyAppointments() {
                   <TableCell>{appt.end_time}</TableCell>
                   <TableCell>
                     <Button onClick={() => handleOpen(appt.id, appt.user_email)} color="primary">
-                      Update Email
+                      Update 
                     </Button>
                     <Button onClick={() => cancelAppointment(appt.id)} color="secondary">
                       Cancel
@@ -183,4 +182,17 @@ export default function MyAppointments() {
     />
 
     <Button onClick={handleUpdateUserName} variant="contained" color="primary" fullWidth>
-      Update Appoin
+      Update Appointment
+    </Button>
+  </Box>
+</Modal>
+
+
+
+
+      {/* Toast container */}
+      <ToastContainer />
+    </Box>
+  );
+}
+
